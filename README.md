@@ -17,7 +17,7 @@ node playlist.js project_key play_list_id > playlist.json
 
 2) download files by json data
 ```
-node download.js playlist.json
+node download.js ./playlist.json
 ```
 
 How to download (for none developers)
