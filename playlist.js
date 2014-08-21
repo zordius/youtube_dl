@@ -1,6 +1,6 @@
 'use strict';
 
-var YA = require("youtube-api"),
+var YA = require('youtube-api'),
     TK = process.argv[2],
     L = process.argv[3],
     plist = [],
