@@ -20,6 +20,11 @@ node playlist.js project_key play_list_id > playlist.json
 node download.js ./playlist.json
 ```
 
+3) convert mp4 files to mp3 files (ffmpeg required)
+```
+for F in *.mp4; do ffmpeg -i "$F" -vn -acodec libmp3lame "${F%.mp4}.mp3"; done
+```
+
 How to download (for none developers)
 -------------------------------------
 
