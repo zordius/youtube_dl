@@ -39,7 +39,7 @@ var YA = require('youtube-api'),
     };
 
 if (process.argv.length < 4) {
-    console.warn('Usage: ' + process.argv[0] + ' ' + process.argv[1] + ' [project_key] [playlist]');
+    console.warn('Usage: ' + process.argv[0] + ' ' + process.argv[1] + ' project_key playlist_id');
     process.exit(1);
 }
 
