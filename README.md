@@ -3,18 +3,29 @@ youtube_dl
 
 A nodejs command line tool to download youtube playlist into mp3 files
 
-How to use
-----------
+How to use (for developers)
+---------------------------
 
 First, you should create a google API project with a project key.
 
 Then...
 
+1. fetch playlist json data.
+
 ```
-node index.js project_key play_list_id
+node playlist.js project_key play_list_id > playlist.json
 ```
 
-Done!
+2. download files by json data
+
+```
+node download.js playlist.json
+```
+
+How to download (for none developers)
+-------------------------------------
+
+TBD....
 
 Why this tool?
 --------------

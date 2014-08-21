@@ -16,12 +16,13 @@ var YA = require("youtube-api"),
             args.pageToken = pageToken;
         }
 
-        console.log('fetching playlist items...');
+        console.warn('fetching playlist items...');
 
         YA.playlistItems.list(args, function(err, D) {
             if (err) {
-                console.log('ERROR!');
-                console.log(err);
+                console.warn('ERROR!');
+                console.warn(err);
+                process.exit(2);
             } else {
                 if (D.items) {
                     plist = plist.concat(D.items);
@@ -29,15 +30,16 @@ var YA = require("youtube-api"),
                 if (D.nextPageToken) {
                     getPlistNext(D.nextPageToken);
                 } else {
-                    console.log('DONE!');
-                    console.log(plist.length);
+                    console.log(JSON.stringify(plist));
+                    console.warn('DONE!');
+                    console.warn(plist.length);
                 }
             }
         });
     };
 
 if (process.argv.length < 4) {
-    console.log('Usage: ' + process.argv[0] + ' ' + process.argv[1] + ' [project_key] [playlist]');
+    console.warn('Usage: ' + process.argv[0] + ' ' + process.argv[1] + ' [project_key] [playlist]');
     process.exit(1);
 }
 
