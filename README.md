@@ -11,13 +11,10 @@ First, you should create a google API project with a project key.
 Then...
 
 1. fetch playlist json data.
-
 ```
 node playlist.js project_key play_list_id > playlist.json
 ```
-
 2. download files by json data
-
 ```
 node download.js playlist.json
 ```
