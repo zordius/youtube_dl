@@ -1,9 +1,9 @@
 'use strict';
 
-var http = require('http'),
+var ytdl = require('ytdl-core'),
     fs = require('fs'),
     F = process.argv[2],
-    T = process.argv[3],
+    T = process.argv[3] || '',
     plist = [],
     usage = function () {
         console.warn('Usage: ' + process.argv[0] + ' ' + process.argv[1] + ' ./playlist.json [save_path]');
@@ -19,12 +19,37 @@ var http = require('http'),
             process.exit(4);
         }
 
-        F = D.contentDetails.note.replace(/ |-/g, '_') + '.mp3';
+        F = T + D.contentDetails.note.replace(/ |-/g, '_') + '.mp4';
 
         console.log('Now downloading video ' + D.contentDetails.videoId + ' to ' + F + '...');
 
+        if (fs.existsSync(F)) {
+            if (fs.statSync(F).size) {
+                console.warn(' File already downloaded, skip.');
+                return next();
+            } else {
+                console.warn(' 0 size file already there, I will overwrite on it.');
+            }
+        }
+
+        F = fs.createWriteStream(F);
+        F.on('finish', function () {
+            F.close();
+            console.log(' Saved!');
+            next();
+        });
+
+        ytdl('http://www.youtube.com/watch?v=' + D.contentDetails.videoId, {
+            filter: function (format) {
+                return (format.audioBitrate === 128) && (format.container === 'mp4');
+            }
+        }).pipe(F);
+    },
+    next = function () {
         if (plist.length) {
             downloadList();
+        } else {
+            console.log('Done!');
         }
     };
 

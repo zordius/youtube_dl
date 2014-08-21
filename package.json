@@ -28,6 +28,7 @@
     "url": "https://github.com/zordius/youtube_dl/issues"
   },
   "dependencies": {
-    "youtube-api": "0.3.0"
+    "youtube-api": "0.3.0",
+    "ytdl-core": "0.2.4"
   }
 }
