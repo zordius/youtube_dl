@@ -19,9 +19,16 @@ var ytdl = require('ytdl-core'),
             process.exit(4);
         }
 
-        F = T + D.contentDetails.note.replace(/ |-/g, '_') + '.mp4';
+        F = T + D.contentDetails.note.replace(/ |-/g, '_');
 
-        console.log('Now downloading video ' + D.contentDetails.videoId + ' to ' + F + '...');
+        console.log('Now downloading video ' + D.contentDetails.videoId + ' to ' + F + '.mp4 ...');
+
+        if (fs.existsSync(F + '.mp3')) {
+            console.warn(' Mp3 file already there, skip.');
+            return next();
+        }
+
+        F += '.mp4';
 
         if (fs.existsSync(F)) {
             if (fs.statSync(F).size) {
