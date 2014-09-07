@@ -28,7 +28,8 @@ for F in *.mp4; do ffmpeg -i "$F" -vn -acodec libmp3lame "${F%.mp4}.mp3"; done
 How to download (for none developers)
 -------------------------------------
 
-TBD....
+1. install nodejs from http://nodejs.org/
+2. 
 
 Why this tool?
 --------------

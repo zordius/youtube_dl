@@ -2,7 +2,6 @@
   "name": "youtube_dl",
   "version": "0.0.1",
   "description": "A nodejs command line tool to download youtube playlist into mp3 files",
-  "main": "./index.js",
   "author": "Zordius Chen <zordius@gmail.com>",
   "contributors": [
     {
@@ -23,12 +22,20 @@
     "playlist",
     "mp3"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zordius/youtube_dl/issues"
-  },
   "dependencies": {
     "youtube-api": "0.3.0",
     "ytdl-core": "0.2.4"
-  }
+  },
+  "bin": {
+    "youtube_dl": "./download.js"
+  },
+  "bugs": {
+    "url": "https://github.com/zordius/youtube_dl/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/zordius/json-path-processor/blob/master/LICENSE.txt"
+    }
+  ]
 }
